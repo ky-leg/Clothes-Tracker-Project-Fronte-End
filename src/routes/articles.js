@@ -16,6 +16,7 @@ export default function Articles() {
         .then(articleData => setArticles(articleData))
     }, [])
 
+
     useEffect(() => {
         fetch('http://localhost:9292/brands')
         .then(r => r.json())
@@ -50,11 +51,11 @@ export default function Articles() {
                     material = {article.material}
                     color = {article.color}
                     size = {article.size}
-                    customer_id= {article.customer_id}
-                    brand_id= {article.brand_id}
-                    brands = {brands}
-                    customers = {customers}
                     id={article.id}
+                    brands={brands}
+                    customers={customers}
+                    brand={article.brand}
+                    customer = {article.customer}
                     getIDForBrand={getIDForBrand} 
                     getIDForCustomer={getIDForCustomer}
                     onArticleDelete={onArticleDelete}
@@ -65,7 +66,7 @@ export default function Articles() {
         }        
     )
 
-    console.log(displayArticles)
+    console.log(articles)
 
     function getIDForBrand(newBrandName){
         return brands.filter(brand => brand.name===newBrandName)[0].id
